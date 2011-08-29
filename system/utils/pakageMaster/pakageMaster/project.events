@@ -1,0 +1,120 @@
+a:4:{s:9:"--indexes";a:3:{s:20:"dlgconfirminstallpak";a:18:{s:6:"fmEdit";i:-1;s:6:"image1";i:1;s:6:"l_name";i:2;s:6:"l_desc";i:3;s:6:"bevel1";i:4;s:10:"btn_cancel";i:5;s:11:"btn_install";i:6;s:12:"timerInstall";i:14;s:13:"timerInstall2";i:16;s:14:"showInstallPak";i:15;s:6:"label2";i:7;s:6:"label3";i:8;s:6:"label4";i:9;s:5:"l_ver";i:10;s:6:"bevel2";i:0;s:8:"l_author";i:11;s:10:"scrollBox1";i:12;s:6:"label1";i:13;}s:10:"dlgpakages";a:10:{s:6:"fmEdit";i:-1;s:6:"label1";i:0;s:8:"btn_info";i:2;s:15:"showPakagesList";i:6;s:4:"list";i:4;s:6:"timer1";i:5;s:11:"btn_install";i:3;s:13:"btn_uninstall";i:1;s:9:"popupMenu";i:7;s:13:"pkg_Uninstall";i:8;}s:13:"dlgpakageinfo";a:14:{s:6:"fmEdit";i:-1;s:6:"l_name";i:0;s:6:"bevel1";i:1;s:6:"label2";i:2;s:5:"l_ver";i:3;s:8:"l_author";i:4;s:6:"label3";i:5;s:6:"label4";i:6;s:6:"l_desc";i:7;s:6:"image1";i:8;s:9:"spButton1";i:9;s:5:"memo1";i:11;s:6:"label1";i:10;s:14:"showPakageInfo";i:12;}}s:20:"dlgconfirminstallpak";a:18:{s:6:"image1";b:0;s:6:"l_name";b:0;s:6:"l_desc";b:0;s:6:"bevel1";b:0;s:10:"btn_cancel";a:1:{s:7:"onclick";s:87:"c("dlgConfirmInstallPak")->close();
+c("dlgConfirmInstallPak")->modalResult = mrCancel;";}s:11:"btn_install";a:1:{s:7:"onclick";s:660:"$params = CApi::readDSPak( c("dlgConfirmInstallPak")->file );
+
+   c("scrollBox1")->show();
+   $APPLICATION->processMessages();
+   CApi::installPak($params);
+
+   if ( file_exists( dirname( $params['file'] ).'/class.php') ){
+       include dirname($params['file']).'/class.php';
+   }
+
+   delay(1000);
+   
+   message_beep(66);
+   messageBox("Модуль $params[name] был успешно установлен.",
+   "Установка модулей");
+   messageBox("Перезагрузите среду для того, чтобы изменения вступили в силу.",
+   "Установка модулей");
+   c("dlgConfirmInstallPak")->close();
+
+
+c("dlgConfirmInstallPak")->close();
+c("dlgConfirmInstallPak")->modalResult = mrOk;";}s:6:"label2";b:0;s:6:"label3";b:0;s:6:"label4";b:0;s:5:"l_ver";b:0;s:6:"bevel2";b:0;s:8:"l_author";b:0;s:6:"label1";b:0;s:12:"timerinstall";a:1:{s:7:"ontimer";s:33:"c("btn_install")->enabled = true;";}s:13:"timerinstall2";a:1:{s:7:"ontimer";s:34:"c("btn_install")->enabled = false;";}s:14:"showinstallpak";a:1:{s:9:"onexecute";s:1034:"$params = CApi::readDSPak( $file );
+
+if (CApi::pakageExists($params['name'])){
+   $new_ver  = $params['ver'];
+   $last_ver = CApi::pakageVer($params['name']);
+
+   if ( $new_ver==$last_ver ){
+        message(t("Пакет %s уже установлен!", $params['name']));
+        return;
+   } elseif ( compareVer($new_ver, $last_ver)!==1 ){
+
+        message(t("Пакет %s уже установлен более
+                        новой версии!", $params['name']));
+        return;
+   } else {
+
+        $res = MessageBox(t("Пакет %s уже установлен, вы хотите его обновить?", $params['name']), t("Вопрос"), MB_OKCANCEL);
+        if ( $res == mrOk ){
+
+             CApi::unInstallPak($params['name']);
+
+        } else
+          return;
+   }
+
+}
+
+c("l_name")->caption = $params['name'];
+c("l_ver")->caption  = $params['ver'];
+c("l_desc")->caption = $params['desc'];
+c("l_author")->caption = $params['author'];
+
+c("dlgConfirmInstallPak")->file = $file;
+c("scrollBox1")->hide();
+if ( c("dlgConfirmInstallPak")->showModal() == mrOk ){
+
+}";}s:10:"scrollbox1";b:0;s:8:"--fmedit";a:2:{s:10:"onactivate";s:33:"c("timerInstall")->enable = true;";s:12:"ondeactivate";s:34:"c("timerInstall2")->enable = true;";}}s:10:"dlgpakages";a:10:{s:6:"label1";b:0;s:8:"btn_info";a:1:{s:7:"onclick";s:80:"if ( c("list")->itemIndex != -1 )
+showPakageInfo( c("list")->items->selected );";}s:4:"list";a:1:{s:10:"ondblclick";s:80:"if ( c("list")->itemIndex != -1 )
+showPakageInfo( c("list")->items->selected );";}s:6:"timer1";a:1:{s:7:"ontimer";s:111:"
+c("btn_info")->enabled = c("list")->itemIndex != -1;
+c("btn_install")->enabled = c("list")->itemIndex != -1;";}s:11:"btn_install";a:1:{s:7:"onclick";s:27:"master_Pakages::install(0);";}s:13:"btn_uninstall";a:1:{s:7:"onclick";s:19:"
+pkg_Uninstall(0);";}s:15:"showpakageslist";a:1:{s:9:"onexecute";s:127:"
+c("timer1")->name = true;
+c("list")->text = CApi::pakagesList();
+c("list")->itemIndex = 0;
+
+c("dlgPakages")->showModal();";}s:9:"popupmenu";b:0;s:13:"pkg_uninstall";a:1:{s:9:"onexecute";s:418:"
+if (!$name)
+ $name = c("list")->items->selected;
+
+if (!$name) return;
+
+if ( confirm("Вы точно хотите удалить пакет $name") ){
+
+    CApi::unInstallPak($name);
+    c("list")->text = CApi::pakagesList();
+    messageBox("Модуль $name был успешно удален.",
+                       "Удаление модулей");
+    messageBox("Перезагрузите среду для того, чтобы изменения вступили в силу.",
+    "Удаление модулей");
+}";}s:8:"--fmedit";a:2:{s:10:"onactivate";s:27:"c("timer1")->enable = true;";s:7:"onclose";s:28:"c("timer1")->enable = false;";}}s:13:"dlgpakageinfo";a:14:{s:6:"l_name";b:0;s:6:"bevel1";b:0;s:6:"label2";b:0;s:5:"l_ver";b:0;s:8:"l_author";b:0;s:6:"label3";b:0;s:6:"label4";b:0;s:6:"l_desc";b:0;s:6:"image1";b:0;s:5:"memo1";b:0;s:6:"label1";b:0;s:9:"spbutton1";a:1:{s:7:"onclick";s:495:"$name = c("l_name")->caption;
+
+if ( confirm("Вы точно хотите удалить пакет $name") ){
+
+    CApi::unInstallPak($name);
+    
+    message_beep(66);
+    messageBox("Модуль $name был успешно удален.",
+                       "Удаление модулей");
+    messageBox("Перезагрузите среду для того, чтобы изменения вступили в силу.",
+    "Удаление модулей");
+
+    c("dlgPakageInfo")->close();
+    c("dlgPakages->list")->text = CApi::pakagesList();
+    c("dlgPakages->timer1")->enable = true;
+}";}s:14:"showpakageinfo";a:1:{s:9:"onexecute";s:625:"$file = DOC_ROOT.'/ext/'.$name.'.dspak';
+$params = CApi::readDSPak($file);
+
+c("l_name")->caption = $params['name'];
+c("l_ver")->caption  = $params['ver'];
+c("l_desc")->caption = $params['desc'];
+c("l_author")->caption = $params['author'];
+
+$files = stripslashes(file_get_contents(DOC_ROOT.'/ext/'.$name.'.info'));
+$files = unserialize($files);
+
+c("memo1")->text = '';
+foreach((array)$files as $s_name=>$section){
+   c("memo1")->text .= '['. $s_name . ']'._BR_;
+   foreach($section as $file){
+
+     c("memo1")->text .= $file._BR_;
+   }
+   
+   c("memo1")->text .= _BR_;
+}
+
+c("dlgPakageInfo")->showModal();";}s:8:"--fmedit";a:0:{}}}

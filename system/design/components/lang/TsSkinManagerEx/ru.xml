@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<messages>
+  
+    <i>
+        <n>gr_skins</n>
+        <v>Скины</v>
+    </i>
+        
+    <i>
+        <n>TsSkinManager_Caption</n>
+        <v>Менеджер скинов</v>
+    </i>
+    
+    <i>
+        <n>Skin Name</n>
+        <v>Название скина</v>
+    </i>
+    
+    <i>
+        <n>Skin Directory</n>
+        <v>Папка со скинами</v>
+    </i>
+    
+    <i>
+        <n>Skin All</n>
+        <v>Скинировать все</v>
+    </i>
+    
+    <i>
+        <n>Path to Skin file (.asz)</n>
+        <v>Путь к скин файлу (.asz)</v>
+    </i>
+    
+    <i>
+        <n>Active</n>
+        <v>Активный</v>
+    </i>
+    
+</messages>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<messages>
+  
+    <i>
+        <n>TChromium_Caption</n>
+        <v>Chromium</v>
+    </i>
+        
+    <i>
+        <n>TsSkinProvider_Caption</n>
+        <v>Скин формы</v>
+    </i>
+    
+    <i>
+        <n>Caption Alignment</n>
+        <v>Выравнивание заголовка</v>
+    </i>
+    
+    <i>
+        <n>Resize Mode</n>
+        <v>Режим изменения размеров</v>
+    </i>
+    
+    <i>
+        <n>Show App Icon</n>
+        <v>Показывать иконку</v>
+    </i>
+    
+    <i>
+        <n>Use global color</n>
+        <v>Глобальный цвет</v>
+    </i>
+    
+    
+</messages>

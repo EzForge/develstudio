@@ -1,0 +1,2 @@
+classes: myCompile
+functions: php_strip_whitespace_ex

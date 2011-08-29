@@ -1,0 +1,39 @@
+object fmEdit: TForm
+  Align = alCustom
+  AlphaBlend = False
+  AlphaBlendValue = 255
+  AutoSize = False
+  AutoScroll = True
+  BorderIcons = []
+  BorderStyle = bsSizeable
+  BorderWidth = 0
+  Cursor = crDefault
+  Constraints.MinHeight = 0
+  Constraints.MinWidth = 0
+  Constraints.MaxHeight = 0
+  Constraints.MaxWidth = 0
+  HelpType = htKeyword
+  HelpKeyword = 
+    'YToyOntzOjU6IkNMQVNTIjtzOjU6IlRGb3JtIjtzOjY6IlBBUkFNUyI7YToxOntz' +
+    'Ojg6ImF2aXNpYmxlIjtiOjA7fX0='
+  Align = alNone
+  BorderStyle = bsSizeable
+  Caption = 'Form Caption'
+  ClientHeight = 400
+  ClientWidth = 500
+  Color = $00e6e6e6
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsStayOnTop
+  OldCreateOrder = False
+  Visible = True
+  PixelsPerInch = 96
+  TextHeight = 13
+  ScreenSnap = False
+  SnapBuffer = 10
+  TransparentColor = False
+  TransparentColorValue = clBlack
+end

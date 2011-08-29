@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<messages>
+  
+    <i>
+        <n>TGoogleTranslate_Caption</n>
+        <v>Google Переводчик</v>
+    </i>
+    <i>
+        <n>From Language</n>
+        <v>Язык оригинала</v>
+    </i>
+
+    <i>
+        <n>To Language</n>
+        <v>Язык перевода</v>
+    </i>
+
+    <i>
+        <n>Charset</n>
+        <v>Кодировка</v>
+    </i>
+    
+</messages>

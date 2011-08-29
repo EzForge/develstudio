@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<messages>
+  
+    <i>
+        <n>gr_math</n>
+        <v>Математика</v>
+    </i>
+        
+    <i>
+        <n>TFormulaImage_Caption</n>
+        <v>Изображение Формулы</v>
+    </i>
+    
+    <i>
+        <n>Expression</n>
+        <v>Выражение</v>
+    </i>
+    
+    <i>
+        <n>Is Bold</n>
+        <v>Жирность</v>
+    </i>
+    
+    <i>
+        <n>Is Italic</n>
+        <v>Курсив</v>
+    </i>
+    
+    <i>
+        <n>Is Underline</n>
+        <v>Подчеркнутость</v>
+    </i>
+    
+    
+</messages>

@@ -1,0 +1,9 @@
+[main]
+name=AlphaSkin System
+ver =1.0.0.1
+author=SoulStream Company
+desc=Ѕиблиотека добовл€юща€ поддержку скинов дл€ создаваемых программ
+
+components=components
+utils=utils
+actions=actions

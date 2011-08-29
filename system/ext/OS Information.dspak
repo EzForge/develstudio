@@ -1,0 +1,8 @@
+[main]
+name=OS Information
+ver =1.0.0.3
+author=SoulStream Company
+desc=Библиотека позволяющая узнавать минимальную информацию об ОС и др.
+
+[en]
+desc=Library for to show minimal information about OS ant etc.

@@ -1,0 +1,42 @@
+a:2:{s:9:"--indexes";a:1:{s:10:"scriptlist";a:15:{s:6:"fmEdit";i:-1;s:6:"label1";i:0;s:8:"listBox1";i:2;s:7:"button1";i:3;s:8:"btn_edit";i:4;s:10:"btn_delete";i:5;s:7:"button4";i:6;s:10:"popupMenu1";i:7;s:6:"do_add";i:8;s:7:"do_edit";i:9;s:9:"do_delete";i:10;s:13:"sl_updateList";i:12;s:6:"timer1";i:13;s:7:"openDlg";i:11;s:6:"label2";i:1;}}s:10:"scriptlist";a:15:{s:6:"label1";b:0;s:7:"button1";a:1:{s:7:"onclick";s:9:"do_add();";}s:8:"btn_edit";a:1:{s:7:"onclick";s:10:"do_edit();";}s:10:"btn_delete";a:1:{s:7:"onclick";s:12:"do_delete();";}s:7:"button4";a:1:{s:7:"onclick";s:25:"c("scriptList")->close();";}s:6:"do_add";a:1:{s:9:"onexecute";s:268:"$x = c('scriptList->openDlg')->execute();
+
+if ($x){
+   global $projectFile;
+   x_copy( c("scriptList->openDlg")->fileName,
+           dirname($projectFile).'/scripts/'.
+           basename(c("scriptList->openDlg")->fileName)
+          );
+   sl_updateList();
+}";}s:7:"do_edit";a:1:{s:9:"onexecute";s:287:"if ( c("scriptList->listBox1")->itemIndex == -1) return;
+
+global $projectFile;
+
+$file = dirname( $projectFile ) . '/scripts/';
+$file.= c("scriptList->listBox1")->items->selected;
+
+$file = realpath($file);
+
+shell_execute(0,'open',
+                       $file ,'',''
+,SW_SHOW);";}s:9:"do_delete";a:1:{s:9:"onexecute";s:321:"if ( c("scriptList->listBox1")->itemIndex == -1) return;
+
+if ( !confirm("Вы точно хотите удалить выбранный файл?") ) return;
+
+global $projectFile;
+
+$file = dirname( $projectFile ) . '/scripts/';
+$file.= c("scriptList->listBox1")->items->selected;
+
+$file = realpath($file);
+
+unlink( $file );
+
+sl_updateList();";}s:6:"timer1";a:1:{s:7:"ontimer";s:167:"
+
+c("scriptList->btn_edit",1)->enabled = c("scriptList->listBox1",1)->itemIndex >= 0;
+c("scriptList->btn_delete",1)->enabled = c("scriptList->btn_edit",1)->enabled;";}s:6:"label2";b:0;s:8:"listbox1";b:0;s:10:"popupmenu1";b:0;s:13:"sl_updatelist";a:1:{s:9:"onexecute";s:143:"global $projectFile;
+
+dir_search(dirname($projectFile). "/scripts/", $files, "php", false, false);
+c("scriptList->listBox1")->text = $files;";}s:7:"opendlg";b:0;s:8:"--fmedit";a:1:{s:10:"onactivate";s:59:"sl_updateList();
+
+c("scriptList->timer1")->enable = true;";}}}
